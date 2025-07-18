@@ -12,10 +12,12 @@ public class LineItemServiceLayer {
 
 
 
+
     public double totalCost(List<GridEntry> GrindEntries) {
         if(GrindEntries==null|| GrindEntries.isEmpty())
-            return 0.0;
-        else
+        { return 0.0;}
+
+
         return GrindEntries.stream()
                 .mapToDouble(e->{
                     double qty=e.getQuantity()!=null?e.getQuantity():0.0;
@@ -25,7 +27,12 @@ public class LineItemServiceLayer {
 
                     return costofline;
                 })
-                .sum();
+                .sum();}
+
+
+
+
+        }
 
         /*
         * for (GridEntry entry : gridEntries) {
@@ -37,5 +44,4 @@ public class LineItemServiceLayer {
     return total;
 }
 */
-    }
-}
+
