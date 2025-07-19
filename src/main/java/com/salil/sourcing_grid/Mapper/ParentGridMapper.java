@@ -47,10 +47,12 @@ public class ParentGridMapper {
 
         for(LineItemDTO dtosline : parentGridDTO.getItemsDTO()){
 
-            LineItem dotsline=LineItemMapper.DTOtomodal(dtosline);
+            LineItem dotsline=LineItemMapper.DTOtomodal(dtosline,parentgrid);
             items.add(dotsline);
         }
         parentgrid.setItems(items);
+
+
 
         return parentgrid;
     }

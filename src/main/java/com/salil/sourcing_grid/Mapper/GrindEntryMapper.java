@@ -2,6 +2,7 @@ package com.salil.sourcing_grid.Mapper;
 
 import com.salil.sourcing_grid.DTOs.GridEntryDTO;
 import com.salil.sourcing_grid.Modal.GridEntry;
+import com.salil.sourcing_grid.Modal.LineItem;
 
 public class GrindEntryMapper {
 
@@ -9,11 +10,15 @@ public class GrindEntryMapper {
 
         GridEntryDTO gridEntryDTO=new GridEntryDTO();
 
+        double rate= gridEntry.getRate()!=null? gridEntry.getRate():0;
+
+        double qty=gridEntry.getQuantity()!=null?gridEntry.getQuantity():0;
+
         gridEntryDTO.setId(gridEntry.getId());
 
         gridEntryDTO.setGridName(gridEntry.getGridName());
 
-        gridEntryDTO.setCost(gridEntry.getCost());
+        gridEntryDTO.setCost(rate*qty);
 
         gridEntryDTO.setRate(gridEntry.getRate());
 
@@ -24,10 +29,14 @@ public class GrindEntryMapper {
         return gridEntryDTO;
     }
 
-    public static GridEntry gridtoEntity(GridEntryDTO gridEntryDTO){
+    public static GridEntry gridtoEntity(GridEntryDTO gridEntryDTO, LineItem lineitem){
         GridEntry gridEntry=new GridEntry();
 
-        gridEntry.setCost(gridEntryDTO.getCost());
+        double rate= gridEntryDTO.getRate()!=null? gridEntry.getRate():0;
+
+        double qty=gridEntryDTO.getQuantity()!=null?gridEntry.getQuantity():0;
+
+        gridEntry.setCost(rate*qty);
 
         gridEntry.setRate(gridEntryDTO.getRate());
 
@@ -38,6 +47,8 @@ public class GrindEntryMapper {
         gridEntry.setGridName(gridEntryDTO.getGridName());
 
         gridEntry.setCostComponentName(gridEntryDTO.getCostComponentName());
+
+        gridEntry.setLineItem(lineitem);
 
         return gridEntry;
     }
