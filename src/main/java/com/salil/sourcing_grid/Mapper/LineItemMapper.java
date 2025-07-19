@@ -28,7 +28,13 @@ public class LineItemMapper {
 
         return itmesline;
     }
+    public static LineItemDTO linetoDTO(LineItem lineItem,double cost){
+        LineItemDTO itmesline=linetoDTO(lineItem);
 
+        itmesline.setLineItemCost(cost);
+
+        return itmesline;
+    }
 
     public static LineItem DTOtomodal(LineItemDTO lineItemDTO){
 

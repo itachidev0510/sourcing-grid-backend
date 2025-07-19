@@ -19,5 +19,7 @@ public class LineItemDTO {
 
     private List<GridEntryDTO> listofcategoryDTO;
 
+    private double LineItemCost;
+
 
 }
