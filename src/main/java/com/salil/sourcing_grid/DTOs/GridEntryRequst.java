@@ -5,5 +5,7 @@ public class GridEntryRequst {
     private String gridName;
     private String costComponentName;
     private double gridTotalCost;
+    private int qty;
+    private double ate;
 
 }

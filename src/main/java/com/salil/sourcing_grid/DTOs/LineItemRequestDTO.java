@@ -6,7 +6,5 @@ public class LineItemRequestDTO {
 
     private List<GridEntryRequestDTO> gridentries;
 
-    private double LineItemCost;
-
     private String NameOfLineItem;
 }
