@@ -38,6 +38,7 @@ public class GrindEntryMapper {
 
         gridEntry.setCost(rate*qty);
 
+
         gridEntry.setRate(gridEntryDTO.getRate());
 
         gridEntry.setQuantity(gridEntryDTO.getQuantity());
@@ -49,7 +50,6 @@ public class GrindEntryMapper {
         gridEntry.setCostComponentName(gridEntryDTO.getCostComponentName());
 
         gridEntry.setLineItem(lineitem);
-
         return gridEntry;
     }
 }
