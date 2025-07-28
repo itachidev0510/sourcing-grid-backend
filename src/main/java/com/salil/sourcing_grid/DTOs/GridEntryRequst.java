@@ -2,10 +2,8 @@ package com.salil.sourcing_grid.DTOs;
 
 public class GridEntryRequst {
 
-    private int Qtt;
-
-    private double rate;
-
-
+    private String gridName;
+    private String costComponentName;
+    private double gridTotalCost;
 
 }

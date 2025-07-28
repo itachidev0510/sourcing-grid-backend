@@ -4,7 +4,9 @@ import java.util.List;
 
 public class LineItemRequestDTO {
 
-    private List<GridEntryRequestDTO> listofcategoryDTO;
+    private List<GridEntryRequestDTO> gridentries;
 
     private double LineItemCost;
+
+    private String NameOfLineItem;
 }

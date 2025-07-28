@@ -8,4 +8,6 @@ public class LineEntryResponseDTO {
 
     private String NameOfLineItem;
 
+    private double totalCost;
+
 }
