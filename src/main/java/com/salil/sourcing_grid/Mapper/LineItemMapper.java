@@ -1,6 +1,8 @@
 package com.salil.sourcing_grid.Mapper;
 
 import com.salil.sourcing_grid.DTOs.GridEntryDTO;
+import com.salil.sourcing_grid.DTOs.GridEntryRequst;
+import com.salil.sourcing_grid.DTOs.LineEntryResponseDTO;
 import com.salil.sourcing_grid.DTOs.LineItemDTO;
 import com.salil.sourcing_grid.Modal.GridEntry;
 import com.salil.sourcing_grid.Modal.LineItem;
@@ -72,5 +74,26 @@ public class LineItemMapper {
         lineItem.setParentgrid(parentgrid);
 
         return lineItem;
+    }
+
+
+
+
+
+
+
+    public LineEntryResponseDTO lineToResponseDTO(LineItem lineItem) {
+
+        LineEntryResponseDTO response = new LineEntryResponseDTO();
+        response.setNameOfLineItem(lineItem.getNameOfLineItem());
+        response.setListofcategoryDTO(
+                lineItem.getListofcategory().stream().map(entry -> {
+                    GridEntryRequst dto = new GridEntryRequst();
+                    dto.setQty(entry.getQuantity());
+                    dto.setRate(entry.getRate());
+                    return dto;
+                }).toList()
+        );
+        return response;
     }
 }

@@ -10,4 +10,27 @@ public class LineEntryResponseDTO {
 
     private double totalCost;
 
+    public List<GridEntryRequst> getListofcategoryDTO() {
+        return listofcategoryDTO;
+    }
+
+    public void setListofcategoryDTO(List<GridEntryRequst> listofcategoryDTO) {
+        this.listofcategoryDTO = listofcategoryDTO;
+    }
+
+    public String getNameOfLineItem() {
+        return NameOfLineItem;
+    }
+
+    public void setNameOfLineItem(String nameOfLineItem) {
+        NameOfLineItem = nameOfLineItem;
+    }
+
+    public double getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(double totalCost) {
+        this.totalCost = totalCost;
+    }
 }

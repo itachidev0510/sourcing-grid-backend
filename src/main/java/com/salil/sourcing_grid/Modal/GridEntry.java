@@ -49,15 +49,13 @@ private Parentgrid parentgrid;
         return id;
     }
 
-    public LineItem getLineItem() {
-        return lineItem;
-    }
+
 
     public Double getCost() {
         return cost;
     }
 
-    public Double getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
@@ -77,7 +75,19 @@ private Parentgrid parentgrid;
         return costComponentName;
     }
 
+    public Parentgrid getParentgrid() {
+        return parentgrid;
+    }
+
+    public void setParentgrid(Parentgrid parentgrid) {
+        this.parentgrid = parentgrid;
+    }
+
     public String getGridName() {
         return gridName;
+    }
+
+    public LineItem getLineItem() {
+        return lineItem;
     }
 }
