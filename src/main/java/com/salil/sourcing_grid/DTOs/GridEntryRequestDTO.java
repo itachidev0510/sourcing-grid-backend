@@ -5,7 +5,7 @@ public class GridEntryRequestDTO {
     private String gridName;
     private String costComponentName;
     //private double gridTotalCost;
-    private double qty;
+    private int qty;
     private double rate;
 
 
@@ -13,7 +13,7 @@ public class GridEntryRequestDTO {
         return qty;
     }
 
-    public void setQty(double qty) {
+    public void setQty(int qty) {
         this.qty = qty;
     }
 

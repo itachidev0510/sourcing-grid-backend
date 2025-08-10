@@ -13,7 +13,7 @@ public class GridEntry {
 
     private String costComponentName; // e.g., "Steel", "Aluminum"
 
-    private Double quantity;
+    private int quantity;
     private Double rate;
 
     private Double cost;
@@ -41,7 +41,7 @@ private Parentgrid parentgrid;
         this.rate = rate;
     }
 
-    public void setQuantity(Double quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 

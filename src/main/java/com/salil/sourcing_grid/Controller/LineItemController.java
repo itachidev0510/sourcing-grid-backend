@@ -7,6 +7,7 @@ import com.salil.sourcing_grid.Service.LineItemServiceLayer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,7 +16,43 @@ import org.springframework.web.bind.annotation.*;
 
 public class LineItemController {
 
-   /* @PostMapping
+
+
+    @Autowired
+    private LineItemServiceLayer lineItemServiceLayer;
+
+    @PostMapping("/line-items")
+
+
+    public ResponseEntity<LineEntryResponseDTO>CreatelineItem(@RequestBody LineItemRequestDTO lineItemDTO) {
+
+        LineEntryResponseDTO response=lineItemServiceLayer.CreatelineItem(lineItemDTO);
+
+        //response= lineItemServiceLayer.CreatelineItem(lineItemDTO);
+
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @GetMapping("/line-items/{id}")
+
+    public ResponseEntity<LineEntryResponseDTO>getlineItem(@PathVariable long id)
+    {
+        LineEntryResponseDTO response= lineItemServiceLayer.getByid(id);
+        //response= lineItemServiceLayer.getByid(id);
+        return ResponseEntity.ok(response);
+    }
+
+    @PutMapping("/line-items/{id}")
+
+    public ResponseEntity<LineEntryResponseDTO>updatetheline(@PathVariable long id, @Validated @RequestBody LineItemRequestDTO  lineItemRequestDTO){
+        LineEntryResponseDTO response=lineItemServiceLayer.updateLineItem(id,lineItemRequestDTO);
+        return ResponseEntity.ok(response);
+
+    }
+    }
+
+      /* @PostMapping
 
     public ResponseEntity<String>CreatelineItem(@RequestBody LineItem lineItem) {
 
@@ -28,21 +65,5 @@ public class LineItemController {
     }
 
     */
-
-    @Autowired
-    private LineItemServiceLayer lineItemServiceLayer;
-
-    @PostMapping
-
-
-    public ResponseEntity<LineEntryResponseDTO>CreatelineItem(@RequestBody LineItemRequestDTO lineItemDTO) {
-
-        LineEntryResponseDTO response=new LineEntryResponseDTO();
-        response= lineItemServiceLayer.CreatelineItem(lineItemDTO);
-
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
-    }
-    }
 
 

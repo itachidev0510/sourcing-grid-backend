@@ -10,12 +10,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class LineItemServiceLayer {
+public class LineItemServiceLayer  {
 
 
-/*
+
 
 
     public double totalCost(List<GridEntry> GrindEntries) {
@@ -25,7 +26,7 @@ public class LineItemServiceLayer {
 
         return GrindEntries.stream()
                 .mapToDouble(e->{
-                    int qty=e.getQuantity()!=null?e.getQuantity():0.0;
+                    int qty=e.getQuantity();
                     double rate=e.getRate()!=null?e.getRate():0.0;
                     double costofline=qty*rate;
                     e.setCost(costofline);
@@ -33,13 +34,15 @@ public class LineItemServiceLayer {
                     return costofline;
                 })
                 .sum();}
-*/
+
 
     @Autowired
     private  LineItemImpl lineItemimpl;
 
     @Autowired
     private LineItemMapper lineItemMapper;
+
+
 
     public LineEntryResponseDTO CreatelineItem(LineItemRequestDTO dto){
 
@@ -53,7 +56,7 @@ public class LineItemServiceLayer {
     for (GridEntryRequestDTO e:dto.getGridentries()){
         GridEntry entry = new GridEntry();
         entry.setGridName(e.getGridName());
-        entry.setQuantity( e.getQty());
+        entry.setQuantity((int) e.getQty());
         entry.setRate(e.getRate());
         entry.setCostComponentName(e.getCostComponentName());
 
@@ -78,10 +81,64 @@ public class LineItemServiceLayer {
     LineItem saved = lineItemimpl.save(line);
 
 
-        LineEntryResponseDTO responseDTO = lineItemMapper.lineToResponseDTO(saved); // ✅
+        LineEntryResponseDTO responseDTO = lineItemMapper.lineToResponseDTO(saved); //
     return responseDTO;
 
 
+    }
+
+
+
+
+    public LineEntryResponseDTO getByid(long id) {
+
+        LineItem lineItem=lineItemimpl.findById(id).orElseThrow(()-> new RuntimeException("Line item is not found" + id));
+
+        return lineItemMapper.lineToResponseDTO(lineItem);
+    }
+
+    public LineEntryResponseDTO updateLineItem(long id, LineItemRequestDTO lineItemRequestDTO) {
+
+        LineItem lineItem=lineItemimpl.findById(id).orElseThrow(()-> new RuntimeException("Line item is not found" + id));
+
+        lineItem.setNameOfLineItem(lineItemRequestDTO.getNameOfLineItem());
+
+        double totalCost = 0.0;
+        List<GridEntry> gridEntry=new ArrayList<>();
+
+
+        for (GridEntryRequestDTO e:lineItemRequestDTO.getGridentries()){
+            GridEntry entry = new GridEntry();
+            entry.setGridName(e.getGridName());
+            entry.setQuantity((int) e.getQty());
+            entry.setRate(e.getRate());
+            entry.setCostComponentName(e.getCostComponentName());
+
+
+
+
+            entry.setLineItem(lineItem);
+
+            gridEntry.add(entry);
+
+
+
+
+        }
+
+        double totalost=totalCost(gridEntry);
+
+        lineItem.setNameOfLineItem(lineItemRequestDTO.getNameOfLineItem());
+
+
+
+        lineItem.setListofcategory(gridEntry);
+
+        LineItem saved = lineItemimpl.save(lineItem);
+
+
+        LineEntryResponseDTO responseDTO = lineItemMapper.lineToResponseDTO(saved);
+        return responseDTO;
     }
 }
 

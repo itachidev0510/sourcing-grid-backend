@@ -7,10 +7,13 @@ import com.salil.sourcing_grid.DTOs.LineItemDTO;
 import com.salil.sourcing_grid.Modal.GridEntry;
 import com.salil.sourcing_grid.Modal.LineItem;
 import com.salil.sourcing_grid.Modal.Parentgrid;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Component
 public class LineItemMapper {
 
 
@@ -20,6 +23,7 @@ public class LineItemMapper {
 
         itmesline.setId(lineItem.getId());
         itmesline.setNameOfLineItem(lineItem.getNameOfLineItem());
+
 
         List<GridEntryDTO> griddto= new ArrayList<>();
 
@@ -86,6 +90,36 @@ public class LineItemMapper {
 
         LineEntryResponseDTO response = new LineEntryResponseDTO();
         response.setNameOfLineItem(lineItem.getNameOfLineItem());
+
+        List<GridEntryRequst> dtos=new ArrayList<>();
+
+        double totalcost=0.00;
+
+        for(GridEntry entry: lineItem.getListofcategory()){
+            GridEntryRequst dto=new GridEntryRequst();
+
+            dto.setGridName(entry.getGridName());
+
+            dto.setCostComponentName(entry.getCostComponentName());
+
+
+            double cost= entry.getQuantity()* entry.getRate();
+
+            dto.setGridTotalCost(cost);
+
+            dto.setRate(entry.getRate());
+            dto.setQty(entry.getQuantity());
+
+            totalcost+=cost;
+
+            dtos.add(dto);
+
+
+
+        }
+        response.setListofcategoryDTO(dtos);
+        response.setTotalCost(totalcost);
+        /*
         response.setListofcategoryDTO(
                 lineItem.getListofcategory().stream().map(entry -> {
                     GridEntryRequst dto = new GridEntryRequst();
@@ -93,7 +127,11 @@ public class LineItemMapper {
                     dto.setRate(entry.getRate());
                     return dto;
                 }).toList()
+
         );
+        */
+
+
         return response;
     }
 }

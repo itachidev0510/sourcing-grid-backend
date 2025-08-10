@@ -15,9 +15,56 @@ public class GridEntryDTO {
 
     private String costComponentName; // e.g., "Steel", "Aluminum"
 
-    private Double quantity;
+    private int quantity;
     private Double rate;
 
     private Double cost;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getGridName() {
+        return gridName;
+    }
+
+    public void setGridName(String gridName) {
+        this.gridName = gridName;
+    }
+
+    public String getCostComponentName() {
+        return costComponentName;
+    }
+
+    public void setCostComponentName(String costComponentName) {
+        this.costComponentName = costComponentName;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public Double getRate() {
+        return rate;
+    }
+
+    public void setRate(Double rate) {
+        this.rate = rate;
+    }
+
+    public Double getCost() {
+        return cost;
+    }
+
+    public void setCost(Double cost) {
+        this.cost = cost;
+    }
 }

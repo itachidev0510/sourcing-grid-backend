@@ -21,5 +21,35 @@ public class LineItemDTO {
 
     private double LineItemCost;
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNameOfLineItem() {
+        return NameOfLineItem;
+    }
+
+    public void setNameOfLineItem(String nameOfLineItem) {
+        NameOfLineItem = nameOfLineItem;
+    }
+
+    public List<GridEntryDTO> getListofcategoryDTO() {
+        return listofcategoryDTO;
+    }
+
+    public void setListofcategoryDTO(List<GridEntryDTO> listofcategoryDTO) {
+        this.listofcategoryDTO = listofcategoryDTO;
+    }
+
+    public double getLineItemCost() {
+        return LineItemCost;
+    }
+
+    public void setLineItemCost(double lineItemCost) {
+        LineItemCost = lineItemCost;
+    }
 }

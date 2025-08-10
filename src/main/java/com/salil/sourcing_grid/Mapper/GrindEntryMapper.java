@@ -10,9 +10,9 @@ public class GrindEntryMapper {
 
         GridEntryDTO gridEntryDTO=new GridEntryDTO();
 
-        double rate= gridEntry.getRate()!=null? gridEntry.getRate():0;
+        double rate= gridEntry.getRate();
 
-        double qty=gridEntry.getQuantity()!=null?gridEntry.getQuantity():0;
+        int qty=gridEntry.getQuantity();
 
         gridEntryDTO.setId(gridEntry.getId());
 
@@ -32,9 +32,9 @@ public class GrindEntryMapper {
     public static GridEntry gridtoEntity(GridEntryDTO gridEntryDTO, LineItem lineitem){
         GridEntry gridEntry=new GridEntry();
 
-        double rate= gridEntryDTO.getRate()!=null? gridEntry.getRate():0;
+        double rate= gridEntryDTO.getRate();
 
-        double qty=gridEntryDTO.getQuantity()!=null?gridEntry.getQuantity():0;
+        double qty=gridEntryDTO.getQuantity();
 
         gridEntry.setCost(rate*qty);
 
