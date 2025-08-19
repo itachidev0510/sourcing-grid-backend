@@ -4,6 +4,11 @@ import java.util.List;
 
 public class LineEntryResponseDTO {
 
+   private int id;
+
+   private String message;
+
+
     private List<GridEntryRequst> listofcategoryDTO;
 
     private String NameOfLineItem;
@@ -22,6 +27,14 @@ public class LineEntryResponseDTO {
         return NameOfLineItem;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setNameOfLineItem(String nameOfLineItem) {
         NameOfLineItem = nameOfLineItem;
     }
@@ -32,5 +45,13 @@ public class LineEntryResponseDTO {
 
     public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }

@@ -140,6 +140,41 @@ public class LineItemServiceLayer  {
         LineEntryResponseDTO responseDTO = lineItemMapper.lineToResponseDTO(saved);
         return responseDTO;
     }
+
+    public LineEntryResponseDTO deletebyid(long id) {
+
+        LineItem lineItem=lineItemimpl.findById(id).orElseThrow(()-> new RuntimeException("Line item is not found" + id));
+
+        lineItemimpl.delete(lineItem);
+
+        LineEntryResponseDTO response=new LineEntryResponseDTO();
+
+        response.setNameOfLineItem(lineItem.getNameOfLineItem());
+
+        response.setId(lineItem.getId());
+
+
+        response.setMessage("LineItem deleted successfully");
+
+        /*
+          double totalCost = 0.0;
+    if (lineItem.getGridEntries() != null) {
+        for (GridEntry entry : lineItem.getGridEntries()) {
+            totalCost += entry.getQuantity() * entry.getRate();
+        }
+    }
+         */
+
+
+
+
+        return response;
+
+
+
+
+
+    }
 }
 
         /*

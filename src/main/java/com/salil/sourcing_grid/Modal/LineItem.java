@@ -1,5 +1,6 @@
 package com.salil.sourcing_grid.Modal;
 
+import com.salil.sourcing_grid.DTOs.GridEntryRequst;
 import jakarta.persistence.*;
 
 import java.util.List;

@@ -50,6 +50,14 @@ public class LineItemController {
         return ResponseEntity.ok(response);
 
     }
+
+    @DeleteMapping("/line-items/{id}")
+
+    public ResponseEntity<LineEntryResponseDTO>deletetheline(@PathVariable long id){
+
+        LineEntryResponseDTO response=lineItemServiceLayer.deletebyid(id);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
     }
 
       /* @PostMapping
